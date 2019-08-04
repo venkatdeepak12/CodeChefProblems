@@ -1,0 +1,63 @@
+/*
+Barney is a rich lad who lives in an awesome place called Puzzles. 
+Barney likes to show off his wealth by carrying a fully stuffed wallet. 
+But the truth is, he only carries 10 rupee notes to make his wallet look big. 
+One day he goes on a coffee with his crush Robin. While trying to impress her,
+he decided to make the full payment himself. He tried to pay the entire bill with those 10 rupee notes. 
+Since this was an awesome place, if Barney paid anything in multiple of 100 or 1000, 
+the 10 rupee notes would combine to make one single 100 or 1000 rupee note.
+
+The paid amount must be greater than or equal to the bill incurred. 
+Now Barney wants to maximize the number of notes he gives and not spend too much at the same time.
+But he is terrible at maths. So, as a divine follower of brocode, he needs your help in impressing his crush.
+
+Sample Input:
+2
+11
+98
+
+Sample Output:
+20
+110
+
+EXPLANATION:
+For the first case, Barney will give 2 notes of 10 rupees each For the second case, 
+if he gives 10 notes, they will combine to form a 100 rupee note, 
+hence Barney will have to pay 110 rupees to maximize the number of notes
+
+*/
+//Code:
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t,b,count,rem;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>b;
+	        count=b/10;
+	        rem=b%10;
+	        if(rem==0&& b%100!=0)
+	        {
+	            cout<<b<<endl;
+	        }
+	        else
+	        {
+	            b=b+(10-rem);
+	            if(b%100==0)
+	            {
+	                b=b+10;
+	                cout<<b<<endl;
+	            }
+	            else 
+	            {
+	                
+	                cout<<b<<endl;
+	            }
+	           
+	        }
+	    
+	}
+	return 0;
+}
