@@ -1,0 +1,81 @@
+/*
+On her way to ChefLand, Marichka noticed 10K road signs (numbered 0 through 10K−1).
+For each valid i, the sign with number i had the integer i written on one side and 10K−i−1 written on the other side.
+
+Now, Marichka is wondering — how many road signs have exactly two distinct decimal digits written on them 
+(on both sides in total)? Since this number may be large, compute it modulo 10^9+7.
+
+For example, if K=3, the two integers written on the road sign 363 are 363 and 636, 
+and they contain two distinct digits 3 and 6, but on the road sign 362, 
+there are integers 362 and 637, which contain four distinct digits — 2, 3, 6 and 7. On the road sign 11,
+there are integers 11 and 988, which contain three distinct digits — 1, 9 and 8.
+
+Example Input
+1
+1
+
+Example Output
+10
+
+*/
+//Code:
+#include <iostream>
+using namespace std;
+ long long ans[100000004],b[1001];
+int main() {
+  
+  long long t;
+   long long r,i,k,div,rem,j,x,a;
+    cin>>t;
+   r=1;
+   i=1;
+   ans[0]=r;
+  for(i=1;i<=100000000;i++)
+  {
+     r=(r*2)%1000000007;
+     ans[i]=r;
+  }
+  r=1;
+  for(i=0;i<10;i++)
+  {
+      r=(r*ans[100000000])%1000000007;
+      b[i]=r;
+  }
+
+ 
+  while(t--)
+  {
+      x=10;
+      cin>>k;
+      a=1;
+      j=0;
+      div=k/100000000;
+      rem=k%100000000;
+     
+         if(div>0 &&rem==0)
+      {
+          if(div==1)
+          {
+              a=(((a*ans[99999999])%1000000007)*x)%1000000007;
+          }
+          else 
+          {
+               a=(a*b[div-2])%1000000007;
+               a=(((a*ans[99999999])%1000000007)*x)%1000000007;
+          }
+      }
+       else if(div>0)
+      {
+          a=(a*b[div-1])%1000000007;
+          a=(((a*ans[rem-1])%1000000007)*x)%1000000007;
+          
+      }
+      
+      else
+      {
+          a=(((a*ans[rem-1])%1000000007)*x)%1000000007;
+      }
+      cout<<a<<endl;
+  }
+  return 0;
+}
