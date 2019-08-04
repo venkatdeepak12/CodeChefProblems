@@ -1,0 +1,71 @@
+/*
+Chef has invested his savings into N coins (numbered 1 through N). For each valid i, the i-th coin has value Ai. 
+Chef does not want to know how much money he has, so he remembers the mean value of the coins instead of the sum of their values.
+
+A waiter from Chef's restaurant plans to steal exactly one of Chef's coins, but he does not want Chef to know about this, 
+so he can only steal a coin if the arithmetic mean of all remaining coins is the same as the original arithmetic mean of all coins. 
+Since the waiter is not good at mathematics, can you help him complete his plan?
+
+You have to determine whether it is possible to steal some coin and if it is possible,
+choose the coin the waiter should steal. If there are multiple coins that can be stolen, choose the one with the smallest number.
+
+Example Input
+3
+5
+1 2 3 4 5
+4
+5 4 3 6
+10
+1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000 1000000000
+
+Example Output
+3
+Impossible
+1
+
+Explanation
+Example case 1: Stealing the third coin does not change the mean. Initially, it is (1+2+3+4+5)/5=3 and after stealing this coin, it is still (1+2+4+5)/4=3.
+
+Example case 2: It is not possible to steal any coin without changing the mean.
+
+Example case 3: The mean is always 109, both initially and after removing any coin, so each coin can be stolen. In that case, we should choose the first coin.
+
+*/
+
+//CODE:
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	long long n,t,i,j,count;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n;
+	    long long a[n],f=0;
+	    double sum=0;
+	    for(i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	        sum+=a[i];
+	    }
+	    sum/=n;
+	    for(i=0;i<n;i++)
+	    {
+	        if(sum==a[i])
+	        {
+	            cout<<i+1<<endl;
+	            f=1;
+	            break;
+	        }
+	    }
+	    if(f==0)
+	    {
+	        
+	        cout<<"Impossible"<<endl;
+	    }
+	}
+	return 0;
+}
+
