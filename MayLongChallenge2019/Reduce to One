@@ -1,0 +1,48 @@
+/*
+You have become good friends with Chef. Right now, Chef is busy in the kitchen, so he asked you to solve a problem for him.
+
+Consider a list of integers L. Initially, L contains the integers 1 through N, each of them exactly once 
+(but it may contain multiple copies of some integers later). The order of elements in L is not important. 
+You should perform the following operation N−1 times:
+
+Choose two elements of the list, let's denote them by X and Y. These two elements may be equal.
+Erase the chosen elements from L.
+Append the number X+Y+X⋅Y to L.
+At the end, L contains exactly one integer. Find the maximum possible value of this integer. 
+Since the answer may be large, compute it modulo 1,000,000,007 (10^9+7).
+
+Example Input
+3
+1
+2
+4
+
+Example Output
+1
+5
+119
+*/
+
+//CODE:
+#include <iostream>
+using namespace std;
+int main() {
+	long long n,m,t,i,k,sum,add;
+	cin>>t;
+	k=1000000007;
+	while(t--)
+	{
+	  cin>>n;
+	  add=n;
+	  sum=0;
+	  while(n!=0)
+	  {
+	      sum=(add+(n-1)+(add*(n-1)))%k;
+	      add=sum%k;
+	      n--;
+	      
+	  }
+	  cout<<sum<<endl;
+	}
+	return 0;
+}
