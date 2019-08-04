@@ -1,0 +1,63 @@
+/*
+You were strolling outside the restaurant at the end of the universe. On a metaspiral path you stumble upon a weird device which takes a three-digit number as input and processes it. 
+The Hitchhiker's guide to the galaxy explains that it processes the input in the following manner:
+Multiplies it with 13, followed by 11 and then 7
+Outputs all the distinct three-digit numbers possible from the digits of the new number (each digit can only be used once)
+Your friend Zaphod is in a playful mood, and does the following with the device-
+Given a three-digit positive number K, he feeds it to the device for processing.
+He then takes the numbers it gives as output, and send each of them through the device and again collect all the numbers sent out.
+Repeats the above step N times.
+To test your wit, he challenges you to find the number of distinct 3-digit numbers which the device outputs over the N steps. Can you?
+
+Sample Input:
+1
+123 5
+
+Sample Output:
+27
+*/
+
+//CODE:
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	long long t,k,n;
+	int digit[3],i,count;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>k>>n;
+	    if(n>=5)
+	    {
+	    i=0;
+	    while(k!=0)
+	    {
+	        digit[i]=k%10;
+	        k/=10;
+	        i++;
+	    }
+	    sort(digit,digit+3);
+	    if(digit[0]==digit[1])
+	    {
+	        count=2;
+	        if(digit[0]==digit[2])
+	        {
+	            count=1;
+	        }
+	    }
+	    else if(digit[1]==digit[2])
+	    {
+	        count=2;
+	    }
+	    else
+	    {
+	        count=3;
+	    }
+	    cout<<(count*count*count)<<endl;
+	    }
+	    
+	}
+	return 0;
+}
