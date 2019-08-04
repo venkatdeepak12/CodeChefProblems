@@ -1,0 +1,64 @@
+/*
+Robin wants to give away gold to the people of a poor village. 
+The village has N houses each having Gi number of gold coins initially. 
+The houses are arranged in a line. But, the village has a security provision, there are two CCTV cameras C1 and C2 present,
+where at a particular moment, C1 has a view of all houses to the left of house Li (exclusive),
+and C2 has a view of all houses to the right of house Ri (exclusive). Robin has the data of (Li, Ri, Xi) for Q different time slots,
+where Xi denotes the calculated number of gold coins he can give to a single house at the ith time slot. 
+In a time slot, he can give coins to any number of houses, each house getting exactly Xi coins,
+as long as the house is not in view of the camera. But, due to some reasons, 
+Robin has to choose only P (≤Q) of the Q time slots to go to the village. 
+Let us assume Robin has an unlimited supply of gold with him. 
+Find the maximum total number of gold coins the villagers can have, without Robin being caught by the security cameras.
+
+Sample Input:
+    1
+    5 2 4
+    1 2 3 4 5
+    3 5 2
+    1 5 1
+    2 3 2
+    4 5 3
+    
+ Sample Output:
+    27
+    
+EXPLANATION:
+If Robin selects time slots 1 and 4, the final total wealth will be 27, which is the max possible
+
+*/
+//Code:
+
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    long t,n,i,j,p,q,sum;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n>>p>>q;
+        sum=0;
+        long g[n],l[q],r[q],x[q],arr[q];
+        for(i=0;i<n;i++)
+        {
+            cin>>g[i];
+            sum+=g[i];
+        }
+        for(i=0;i<q;i++)
+        {
+            cin>>l[i]>>r[i]>>x[i];
+            arr[i]=(r[i]-l[i]+1)*x[i];
+        }
+        sort(arr,arr+q,greater<int>());
+        i=0;
+        while(p--)
+        {
+            sum+=arr[i];
+            i++;
+        }
+        cout<<sum<<endl;
+    }
+    return 0;
+}
