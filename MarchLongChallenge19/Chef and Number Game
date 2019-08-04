@@ -1,0 +1,76 @@
+/*
+PROBLEM STATEMENT :
+
+Recently, Chef hosted a strange competition at the Byteland annual fair. There were N participants in the competition (numbered 1 through N); at the end of the competition,
+their scores were A1,A2,…,AN. Since it was a strange competition, negative scores were allowed too.
+
+The total score of the competition is calculated as follows:
+
+Divide the participants into one or more non-empty groups (subsets); if there are K groups, let's denote them by G1,G2,…,GK. Each participant should be a member of exactly one group.
+Sum up the scores of participants in each individual group. For each valid i, let's denote the sum of scores of participants in group i by Xi.
+The total score of the competition is the sum of squares of these summed up scores, i.e. X21+X22+…+X2K.
+Chef wants to choose the groups in such a way that the total score is maximum possible. Since there may be many ways to form the groups that lead to the maximum total score,
+Chef wants to know just the size of the largest group and the size of the smallest group which could be formed while still maximising the total score. These sizes are independent - formally,
+they are the maximum and minimum size s of a group such that there is a way to form groups which maximises the total score and contains a group with size s.
+
+Example Input
+1
+5
+5 2 4 6 7
+
+Example Output
+5 5
+*/
+
+//CODE:
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    long n,x,y,zero;
+	    cin>>n;
+	    long a[n];
+	    x=0,y=0,zero=0;
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	        if(a[i]>0)
+	        {
+	            x++;
+	        }
+	         else if(a[i]<0)
+	        {
+	            y++;
+	        }
+	        else{
+	            zero++;
+	        }
+	    }
+	    if(x>=y)
+	    {
+	        x=x+zero;
+	        
+	    }
+	    else
+	    {
+	        y=y+zero;
+	    }
+	    if(y==0)
+	    {
+	        y=x;
+	    }
+	    if(x==0)
+	    {
+	        x=y;
+	    }
+	    cout<<x<<" "<<y<<endl;
+	    
+	}
+	return 0;
+}
+
+
