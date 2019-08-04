@@ -1,0 +1,47 @@
+/*
+Chef is watching a drunkard walking in a pattern outside his house.
+After some time, he realizes what the pattern is. Here is the description of this pattern.
+The drunkard starts N units away from a pit. At first, he walks 1 unit forward then 0 unit backward.
+Afterwards he walks 2 unit forward and 1 unit backward. Then 3 units forward and 2 units backward, and so on. 
+You must tell chef the total number of units of distance the drunkard walks before falling into the pit.
+
+SAMPLE INPUT
+1
+2
+
+SAMPLE OUTPUT
+2
+
+EXPLANATION
+He walks 1 unit forward. His position is now (1, 0). 
+Then he walks 0 unit backwards. Thus, position is unchanged. 
+Now he tries to walk 2 units forward. But after walking 1 unit he will fall into the pit. So total distance he walks is 2 units.
+
+*/
+//Code:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	long long t,n,ans,m;
+	m=1000000007;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n;
+	    if(n>0)
+	    {
+	    if(n%2==0)
+	    {
+	       ans= (n/2)*(n/2+1);
+	    }
+	    else
+	    {
+	        ans=(n/2)*(n/2+1)+1;
+	    }
+	    cout<<(ans)%m<<endl;
+	    }
+	}
+	return 0;
+}
