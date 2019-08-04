@@ -1,0 +1,147 @@
+/*
+You are given a grid with R rows (numbered 1 through R) and C columns (numbered 1 through C).
+A cell in row r and column c is denoted by (r,c).
+Two cells in the grid are adjacent if they have a common side. For each valid i and j, there is a value ai,j written in cell ai,j.
+
+A cell in the grid is stable if the number of cells in the grid which are adjacent to this cell is strictly greater than the value written in this cell. 
+The whole grid is stable if all cells in the grid are stable.
+
+Can you determine whether the grid is stable?
+
+Example Input
+2
+3 3
+1 2 1
+2 3 2
+1 2 1
+3 4
+0 0 0 0
+0 0 0 0
+0 0 4 0
+
+
+Example Output
+Stable
+Unstable
+
+
+Explanation
+Example case 1: Each cell of the grid is stable, so the grid is stable.
+
+Example case 2: The cell in row 3 and column 3 is unstable since the number of cells adjacent to this cell is 3.
+
+*/
+//Code:
+#include <iostream>
+using namespace std;
+
+int main() {
+	int t,n,m,i,j,flag,a[11][11];
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n>>m;
+	   
+	    flag=0;
+	    for(i=1;i<=n;i++)
+	    {
+	        for(j=1;j<=m;j++)
+	        {
+	            cin>>a[i][j];
+	        }
+	    }
+	    for(i=1;i<=n;i++)
+	    {
+	        for(j=1;j<=m;j++)
+	        {
+	            
+	            if(i==1&&j==1)
+	            {
+	                if(a[i][j]>=2)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	            if(i==n&&j==m)
+	            {
+	                if(a[i][j]>=2)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	            if(i==1&&j==m)
+	            {
+	                if(a[i][j]>=2)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	            if(i>1&&j>1&&i<n&&j<m)
+	            {
+	                if(a[i][j]>=4)
+	                {
+	                    flag=1;
+	                    break;
+	                }
+	            }
+	            if(i==1&&j<m)
+	            {
+	                if(a[i][j]>=3)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	            if(i==n&&j<m)
+	            {
+	                if(a[i][j]>=3)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	            if(j==m&&i<n)
+	            {
+	                if(a[i][j]>=3)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	             if(j==1&&i<n)
+	            {
+	                if(a[i][j]>=3)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	             if(j==1&&i==n)
+	            {
+	                if(a[i][j]>=2)
+	                {
+	                    flag=1;
+	                    break;
+	                } 
+	            }
+	             
+	        }
+	        if(flag==1)
+	        {
+	            break;
+	        }
+	    }
+	    if(flag==1)
+	    {
+	    cout<<"Unstable"<<endl;
+	    }
+	    else
+	    {
+	        cout<<"Stable"<<endl;
+	    }
+	}
+	return 0;
+}
