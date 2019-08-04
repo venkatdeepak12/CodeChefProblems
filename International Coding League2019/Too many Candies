@@ -1,0 +1,60 @@
+/*
+Luke, an intergalactic traveller went on a trip across the universe and got candies from the different planets he visited.
+He comes back with N candies and decides to distribute them among his M friends. However, Luke only wants a fair distribution of the candies as he loves everyone equally. 
+(A fair distribution is one in which each of his friends receive an equal number of candies and each friend receives at least one candy.) If a fair distribution is not possible,
+he might throw away some candies and try to distribute the remaining candies in a similar manner.
+
+If he can throw away exactly K candies at a time (he can throw away candies multiple times),
+what is the minimum number of times he will need to throw away candies before achieving a fair distribution?
+
+Sample Input:
+2
+28 6 2
+78 5 3
+
+Sample Output:
+2
+1
+*/
+
+//CODE:
+#include <iostream>
+using namespace std;
+
+int main() {
+	long long t,n,m,k,count;
+	cin>>t;
+	while(t!=0)
+	{
+	  cin>>n>>m>>k;
+	  if(n>1&&k>1&&m>1)
+	  {
+	  count=0;
+	  while(n>=m)
+	  {
+	      if(n!=0)
+	      {
+	      if(n%m==0)
+	      {
+	          cout<<count<<endl;
+	          goto endline;
+	      }
+	      n=n-k;
+	      count++;
+	      
+	      }
+	  }
+	  if(n<m)
+	  {
+	      cout<<"-1"<<endl;
+	  }
+	  }
+	  else
+	  {
+	      cout<<"-1"<<endl;
+	  }
+	  endline: t--;
+	}
+	return 0;
+}
+
