@@ -1,0 +1,80 @@
+/*
+It was Mehul's birthday. So Madhav being his best friend gave him a magic tree . 
+The magical properties of the tree is that, the fruit grows only on N magical points in a tree.,
+which are numbered as 1, 2,3 …N. Each magical point can have maximum of 10^6 fruits.
+The fun part is that Shailesh who doesn’t likes Madhav has the control of those magical point i.e.
+he can decide the numbers of fruits on a magical point.
+Mehul likes to keep records of number of fruits between two points , l to r (including l and r ). 
+Since Shailesh doesn’t likes Mehul . He keeps changing the number of fruits on the magical points.
+Since Mehul Is busy in his lit birthday party. He asks Tanmaya to help him out. 
+And we all know that Tanmaya alone won’t be able to do this job. So he is asking for your help.
+You will be given an array of integers and asked Q queries. There are two types of queries:
+
+Query: "1 i x" : means Shailesh changed ith element to value x.
+
+Query: "2 l r" : means Mehul wants to know sum of numbers between position l and r of the array (including l and r). 
+
+Note: The inputs are 1-based indexing of array , ie i = 1 means first element of the array.
+
+Input:
+
+First line will have N , number of magical points on the tree.
+Second line will have N number of integers, intital number of fruits in the tree.
+Third line will contain Q, number of queries.
+
+Sample Input:
+    5
+    1 2 3 4 5
+    5
+    2 1 5
+    1 3 10
+    2 2 4
+    2 1 4
+    1 1 200
+    
+Sample Output:
+    15
+    16
+    17
+    
+  */
+  
+  //Code
+  
+#include <iostream>
+using namespace std;
+long long sumarray(long long a[],long long l,long long r)
+{
+    long long s=0,i;
+    for(i=l;i<=r;i++)
+    {
+        s+=a[i];
+    }
+    return s;
+}
+
+int main() {
+    long long n,l,r,sum=0,q,c,temp,t,i;
+    cin>>n;
+    long long a[n];
+    for(i=1;i<=n;i++)
+    {
+        cin>>a[i];
+    }
+    cin>>q;
+    while(q--)
+    {
+        cin>>c>>l>>r;
+        if(c==1)
+        {
+             a[l]=r;
+        }
+        if(c==2)
+        {
+            sum=sumarray(a,l,r);
+            cout<<sum<<endl;
+        }
+    }
+    
+	return 0;
+}
