@@ -1,0 +1,47 @@
+/*
+Walter White is trying to expand his area for selling his crystals. 
+But Jesse tells him that the city whose name contains 'x' ( small letter 'x') is not safe to sell.
+
+Walter and Jesse appoint Shailesh to find if the area is safe, as they are busy cooking crystals. 
+But Shailesh is not capable of doing this work, so he needs your help.
+
+You will be given a city name S, you have to tell whether it's safe or not.
+
+Sample Input:
+Mumbai
+Mexico
+
+Sample Output:
+Safe
+Not safe
+*/
+
+//Code
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    long long i;
+    string st;
+    cin>>st;
+    i=0;
+    int f=0;
+    while(st[i]!='\0')
+    {
+        if(st[i]=='x')
+        {
+            f=1;
+            cout<<"Not Safe"<<endl;
+            break;
+        }
+        i++;
+    }
+    if(f==0)
+    {
+        cout<<"Safe"<<endl;
+    }
+    
+           
+	return 0;
+}
