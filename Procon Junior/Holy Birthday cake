@@ -1,0 +1,43 @@
+/*
+Due to Walter's work schedule, there is tension between Walter and Skyler, which in turn is leading to divorce.
+Skyler being the mother of his newborn child has custody of them and does not allow Walter to come to her daughter-holly's birthday.
+
+Walter hires Mehul for the job. (Assume the cake to be a circle, with centre as point A). 
+There are some rules regarding cake cutting.
+
+First Skyler chooses two points (B and C) on the circumference of the cake and cuts a piece joining the two points
+with another point D on the circumference, as shown in the image. After this Mehul has to cut a new cake through the same two points
+(B and C), and the center A. Thus joining point B with A and point C with A as shown in this image.
+
+You will be given the angle BDC cut by Skyler. Help Mehul find the angle of his piece of cake for Walter to enjoy his daughter's birthday.
+
+Sample Input:
+30
+
+Sample Output:
+60
+
+EXPLANATION:
+Angle of Skyler's piece (ie angle BDC) is 30 deg so the angle at centre will be 60 deg.
+
+*/
+
+//Code
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	double n;
+	cin>>n;
+	if(n<=90)
+	{
+	cout<<(n*2)<<endl;
+	}
+	else
+	{
+	    cout<<360-(n*2)<<endl;
+	}
+	
+	return 0;
+}
