@@ -1,0 +1,99 @@
+/*
+
+"It's totally fun to play troublemakers ― totally." - Lee Pace
+
+Sakshi had a matrix with N rows (numbered 1 through N) and M columns (numbered 1 through M). 
+Initially, all cells of this matrix contained 0-s. Let's denote a cell in row r and column c by (r,c).
+
+Sakshi is well-known for troubling others. This time, her friends Nikki and Mansi planned to take revenge and teach her a lesson,
+so they changed her matrix by performing the following operation Q times:
+
+Choose any valid cell (x,y).
+Add 1 to all the cells in row x.
+Add 1 to all the cells in column y.
+
+For each valid i, the cell chosen in the i-th operation was (Xi,Yi).
+Nikki and Mansi challenged Sakshi to find the number of cells in the resulting matrix which contain odd integers. 
+Sakshi is not good at math, since she has spent all her life troubling others, so this time, she really needs your help.
+Help Sakshi find the answer.
+
+Example Input
+1
+2 2 3
+1 1
+1 2
+2 1
+
+Example Output
+2
+
+Explanation
+
+Example case 1: After applying the first operation, the matrix becomes:
+                   2 1
+                   1 0
+                After applying the second operation, it becomes:
+                   3 3
+                   1 1
+                Finally, after applying the third operation, it becomes:
+                   4 3
+                   3 2
+
+*/
+
+//Code:
+
+#include<iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+int main()
+{
+   ios_base::sync_with_stdio(0);
+   cin.tie(0);
+   cout.tie(0);
+    long long t,n,i,j,k,m,q;
+    cin>>t;
+    while(t--)
+    {
+        cin>>m>>n>>q;
+        long long r[m+1]={0},c[n+1]={0},oddrow=0,oddcol=0,evenrow=0,evencol=0;
+        while(q--)
+        {
+            cin>>i>>j;
+            r[i]++;// 1 1 0 0 
+                   // 0 0 1 1
+            c[j]++;
+        }
+        for(i=1;i<=m;i++)
+        {
+            
+            if(r[i]%2!=0)
+            {
+                oddrow++;
+            }
+            else
+            {
+               evenrow++; 
+            }
+            
+        }
+       // cout<<oddrow<<"= oddrow\n"<<" evenrow= "<<evenrow<<endl;
+        for(i=1;i<=n;i++)
+        {
+           
+            if(c[i]%2!=0)
+            {
+                oddcol++;
+            }
+            else
+            {
+               evencol++; 
+            }
+            
+        }
+        cout<<oddrow*evencol + oddcol*evenrow<<endl;
+        
+    }
+}
+
