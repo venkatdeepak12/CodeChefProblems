@@ -1,0 +1,50 @@
+/*
+
+You are given an array A of N positive and pairwise distinct integers. 
+You can permute the elements in any way you want.
+
+The cost of an ordering (A1,A2,…,AN) is defined as (((A1modA2)modA3)......)modAN 
+where XmodY means the remainder when X is divided by Y. 
+You need to find the maximum cost which can be attained through any possible ordering of the elements.
+
+Sample Input:
+1
+2
+7 12
+
+Sample Output:
+7
+
+Explanation:
+The two possible ways to order the elements are [7, 12] and [12, 7].
+In the first case, the cost is 7mod12=7 and in the second case the cost is 12mod7=5. 
+Clearly the answer is 7.
+
+*/
+
+//Code:
+
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+
+int main() {
+	long long t,n,i,j;
+	cin>>t;
+	while(t--)
+	{
+	    cin>>n;
+	    long long a[n],ans;
+	    for(i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	    }
+	    sort(a,a+n);
+	    for(i=0;i<n-1;i++)
+	    {
+	        a[i+1]=a[i]%a[i+1];
+	    }
+	    cout<<a[n-1]<<endl;
+	}
+	return 0;
+}
