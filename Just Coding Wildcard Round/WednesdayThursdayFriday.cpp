@@ -4,7 +4,7 @@ There are N college days left before the exams.Every day of the N days is a work
 Since he has to prepare for the exams,
 he is going to bunk all of the college days. What is the probability that he bunks on at least one of his favorite days?
 
-Sample Input:
+Sample Input: 
 1
 7
 
